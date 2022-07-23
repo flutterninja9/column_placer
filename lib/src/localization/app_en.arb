@@ -1,0 +1,6 @@
+{
+  "appTitle": "column_placer",
+  "@appTitle": {
+    "description": "The title of the application"
+  }
+}
