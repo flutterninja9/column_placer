@@ -1,13 +1,37 @@
 import 'package:flutter/material.dart';
 
-class SampleItemListView extends StatelessWidget {
-  SampleItemListView({
+class SampleItemListView extends StatefulWidget {
+  const SampleItemListView({
     Key? key,
   }) : super(key: key);
 
   static const routeName = '/';
 
+  @override
+  State<SampleItemListView> createState() => _SampleItemListViewState();
+}
+
+class _SampleItemListViewState extends State<SampleItemListView>
+    with WidgetsBindingObserver {
   final List<int> items = [1, 1, 6, 1, 6, 7, 2, 1];
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    print(state);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance!.removeObserver(this);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
